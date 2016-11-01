@@ -1,6 +1,8 @@
 var express = require("express")
 app = express()
 var path = require("path")
+require('dotenv').config()
+
 
 
 app.use(express.static(__dirname + "/src"))

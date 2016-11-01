@@ -21570,21 +21570,30 @@
 	  function Home() {
 	    _classCallCheck(this, Home);
 
-	    return _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).call(this));
+	    var _this = _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).call(this));
+
+	    _this.state = { url: null };
+	    return _this;
 	  }
 
 	  _createClass(Home, [{
-	    key: 'componentWillMount',
-	    value: function componentWillMount() {
+	    key: 'handleInput',
+	    value: function handleInput(e) {
+	      this.setState({ channel: e.target.value });
+	    }
+	  }, {
+	    key: 'selectChannel',
+	    value: function selectChannel() {
 	      (0, _axios2.default)({
-	        method: "get",
+	        method: "post",
 	        url: "/twitch",
 	        data: {
-	          channel: "first"
+	          channel: this.state.channel
 	        }
 	      }).then(function (response) {
 	        console.log(response);
-	      });
+	        this.setState({ url: "http://player.twitch.tv/?channel=" + response.data.name });
+	      }.bind(this));
 	    }
 	  }, {
 	    key: 'render',
@@ -21592,7 +21601,25 @@
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        'home'
+	        'home',
+	        _react2.default.createElement(
+	          'label',
+	          null,
+	          'channel name'
+	        ),
+	        _react2.default.createElement('input', { onChange: this.handleInput.bind(this) }),
+	        _react2.default.createElement(
+	          'button',
+	          { onClick: this.selectChannel.bind(this) },
+	          'Go!'
+	        ),
+	        _react2.default.createElement('iframe', {
+	          src: 'http://player.twitch.tv/?channel={c9sneaky}',
+	          height: '720',
+	          width: '1280',
+	          frameborder: '0',
+	          scrolling: 'no',
+	          allowfullscreen: 'true' })
 	      );
 	    }
 	  }]);

@@ -11,11 +11,9 @@ var client = new Twitch({ client_id: process.env.twitch_id, scope: "user_read, c
 
 app.use(bodyparser.urlencoded({extended: true}));
 app.use(bodyparser.json());
-app.get("/twitch", function (req,res) {
-
-  client.channels({channel:"rush"}, function(err, channel) {
+app.post("/twitch", function (req,res) {
+  client.channels({channel:req.body.channel}, function(err, channel) {
     res.json(channel)
-    console.log(req)
   });
 })
 app.use(express.static(__dirname + "/src"))

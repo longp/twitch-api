@@ -21612,14 +21612,7 @@
 	          'button',
 	          { onClick: this.selectChannel.bind(this) },
 	          'Go!'
-	        ),
-	        _react2.default.createElement('iframe', {
-	          src: 'http://player.twitch.tv/?channel={c9sneaky}',
-	          height: '720',
-	          width: '1280',
-	          frameborder: '0',
-	          scrolling: 'no',
-	          allowfullscreen: 'true' })
+	        )
 	      );
 	    }
 	  }]);

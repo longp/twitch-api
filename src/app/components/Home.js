@@ -28,14 +28,14 @@ export default class Home extends Component {
         <label>channel name</label>
         <input onChange={this.handleInput.bind(this)}></input>
         <button onClick={this.selectChannel.bind(this)}>Go!</button>
-        <iframe
-         src="http://player.twitch.tv/?channel={c9sneaky}" 
+        {/* <iframe
+         src="http://player.twitch.tv/?channel={c9sneaky}"
          height="720"
          width="1280"
          frameborder="0"
          scrolling="no"
          allowfullscreen="true">
-     </iframe>
+     </iframe> */}
         </div>
     )
   }

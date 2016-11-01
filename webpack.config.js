@@ -12,11 +12,15 @@ var config = {
     filename:'bundle.js',
   },
   module: {
-    loaders: {
+    loaders: [{
       test: /\.jsx?/,
       include: APP_DIR,
       loader: "babel"
-    }
+    },
+    {
+      test:/\.scss$/,
+      loader: 'style!css!sass'
+    }]
   }
 
 }
